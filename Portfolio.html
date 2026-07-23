@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- [수정] lang="ko" 속성 추가: HTML 문서의 주 언어 명시 (문서 구조 정확성) -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이채연 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- [수정] 기존 <div id="top"> 삭제: header와 id가 중복되어 HTML 유효성 오류 발생 -->
+
+  <!-- Header & Nav -->
+  <header id="top">
+    <div class="header-inner">
+      <div class="logo">이채연 | Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About Me</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- [추가] 스크롤 진행 바: 현재 페이지 스크롤 위치를 시각적으로 표시 (JS에서 너비 제어) -->
+  <div id="progressBar"></div>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="home-content">
+      <h1>안녕하세요,<br><span class="highlight">이채연</span>입니다.</h1>
+      <p>동국대학교 산업시스템공학과 4학년<br>
+        데이터 분석 · 컨설팅 · 경영기획을 희망하는 '산업공학도'입니다.</p>
+      <a href="#about" class="btn">알아보러 가기 ↓</a>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>🎓 학력</h3>
+        <ul>
+          <li><strong>동국대학교</strong> 산업시스템공학과</li>
+          <li>2022년 입학 · 2027년 졸업 예정</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>📌 활동 및 경험</h3>
+        <ul>
+          <li><strong>Con.point</strong> 컨설팅 동아리 회장</li>
+          <li><strong>FIELD</strong> 산업공학 학회 활동</li>
+          <li>데이터기술경영(DTM) 연구실 참여</li>
+          <li>AMOREPACIFIC 브랜드 챌린지 참여</li>
+          <li>캡스톤 디자인 (MCLP 방법론 활용)</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>🛠 기술 스택</h3>
+        <ul>
+          <li><strong>분석:</strong> Python, R, C++</li>
+          <li><strong>시각화:</strong> Tableau, Matplotlib</li>
+          <li><strong>문서:</strong> Notion, PowerPoint</li>
+          <li><strong>웹:</strong> HTML5, CSS3, JavaScript</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>🎯 목표 직무</h3>
+        <ul>
+          <li>경영기획 / 전략기획</li>
+          <li>서비스 기획 / PM</li>
+          <li>경영 컨설팅</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="images/최적입지.png" alt="캡스톤 디자인 프로젝트">
+        <div class="project-info">
+          <h3>공공 기숙사 입지 최적화</h3>
+          <p>MCLP(최대 커버링 입지 모델) 방법론을 활용하여
+            공공 기숙사 최적 입지를 분석한 캡스톤 디자인 프로젝트</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">OR</span>
+            <span class="tag">최적화</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/COVID-19%20%ED%8A%B8%EC%9C%97%20%ED%86%A0%ED%94%BD%20%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EB%B6%84%EC%84%9D%20%EC%BD%94%EB%93%9C.ipynb" target="_blank" class="project-link">
+              코드 보러가기 →
+            </a>
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/COVID-19%20%ED%8A%B8%EC%9C%97%20%ED%86%A0%ED%94%BD%20%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EB%B6%84%EC%84%9D%20%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf" target="_blank" class="project-link">
+              보고서 보러가기 →
+            </a>
+          </div>
+      </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/아모레.png" alt="AMOREPACIFIC 프로젝트">
+        <div class="project-info">
+          <h3>AMOREPACIFIC 브랜드 챌린지</h3>
+          <p>소비자 리뷰 크롤링 및 텍스트 마이닝을 통해
+            브랜드 인사이트를 도출하고 마케팅 전략을 제안한 프로젝트</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">텍스트마이닝</span>
+            <span class="tag">마케팅전략</span>
+          </div>
+          <a href="https://github.com/Chaeyeon1106/LEE/blob/main/AMOREPACIFIC%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EC%B1%8C%EB%A6%B0%EC%A7%80%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf" target="_blank" class="project-link">
+            결과물 보러가기 →
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/종설.png" alt="컨테이너 혼잡 지수">
+        <div class="project-info">
+          <h3>항만 혼잡도 기반 시나리오별 혼합 컨테이너 트럭 시스템의 배차 스케줄링 최적화</h3>
+          <p>항만 터미널 내 QC-YC 수평 운송의 혼잡 수준을
+            분류하는 지수를 백분위 및 클러스터링 기법으로 설계한 연구</p>
+          <div class="project-tags">
+            <span class="tag">데이터분석</span>
+            <span class="tag">클러스터링</span>
+            <span class="tag">연구</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/%EC%B5%9C%EC%A0%81%ED%99%94_%EC%BD%94%EB%93%9C_%EC%B5%9C%EC%A2%85%EB%B0%9C%ED%91%9C_%EC%88%98%EC%A0%95%EC%99%84%EB%A3%8C.ipynb" target="_blank" class="project-link">
+              코드 보러가기 →
+            </a>
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/%ED%98%BC%ED%95%A9%20%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%20%ED%8A%B8%EB%9F%AD%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EB%B0%B0%EC%B0%A8%20%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf" target="_blank" class="project-link">
+              보고서 보러가기 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+<!-- after -->
+      <div class="project-card">
+        <img src="images/LDA.png" alt="LDA 토픽 모델링">
+        <div class="project-info">
+          <h3>COVID-19 트윗 토픽 모델링</h3>
+          <p>감성별(긍정/부정/중립) 트윗 데이터에 LDA 기법을 적용하여
+            주제를 분류하고 인사이트를 도출한 데이터 분석 과제</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">LDA</span>
+            <span class="tag">NLP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/COVID-19%20%ED%8A%B8%EC%9C%97%20%ED%86%A0%ED%94%BD%20%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EB%B6%84%EC%84%9D%20%EC%BD%94%EB%93%9C.ipynb" target="_blank" class="project-link">
+              코드 보러가기 →
+            </a>
+            <a href="https://github.com/Chaeyeon1106/LEE/blob/main/COVID-19%20%ED%8A%B8%EC%9C%97%20%ED%86%A0%ED%94%BD%20%EB%AA%A8%EB%8D%B8%EB%A7%81%20%EB%B6%84%EC%84%9D%20%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf" target="_blank" class="project-link">
+              보고서 보러가기 →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Me Section -->
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <p class="contact-desc">프로젝트 협업, 채용 문의, 어떤 연락이든 환영합니다 😊</p>
+
+    <!-- [수정] novalidate 추가: 브라우저 기본 검증 대신 JavaScript 정규표현식 유효성 검사가 동작하도록 함 -->
+    <form id="contactForm" class="contact-form" novalidate>
+      <div class="form-group">
+        <label for="name">이름 <span class="required">*</span></label>
+        <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+      </div>
+      <div class="form-group">
+        <label for="email">이메일 <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="example@email.com">
+      </div>
+      <div class="form-group">
+        <label for="message">메시지 <span class="required">*</span></label>
+        <textarea id="message" name="message" rows="5"
+          placeholder="메시지를 입력하세요"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">메시지 보내기</button>
+    </form>
+
+    <div class="sns-area">
+      <p>SNS & 연락처</p>
+      <div class="sns-links">
+
+        <!-- [수정] GitHub 실제 계정 주소로 연결 -->
+        <a href="https://github.com/Chaeyeon1106" target="_blank" class="sns-btn">
+          <img src="images/깃허브.jpg" alt="GitHub 아이콘" class="sns-icon">
+          GitHub
+        </a>
+
+        <!-- [수정 필요] ⚠ 아래 LinkedIn 주소는 본인 실제 아이디로 교체하세요 -->
+        <a href="https://linkedin.com/in/본인아이디" target="_blank" class="sns-btn">
+          <img src="images/링크드인.jpg" alt="LinkedIn 아이콘" class="sns-icon">
+          LinkedIn
+        </a>
+
+        <div class="contact-info">
+          <p>📧 leess501a@naver.com</p>
+          <p>📞 010-9481-7340</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 이채연 | 동국대학교 산업시스템공학과</p>
+    <a href="#top" class="top-btn">맨 위로 ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
