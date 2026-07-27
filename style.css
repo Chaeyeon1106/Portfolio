@@ -1,0 +1,595 @@
+/* ===== 기본 리셋 & 전체 설정 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2d6be4;
+  --primary-dark: #1a4db5;
+  --bg-white: #ffffff;
+  --bg-light: #f5f7fa;
+  --bg-gray: #eef0f4;
+  --text-dark: #1a1a2e;
+  --text-mid: #444466;
+  --text-light: #888899;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* [수정] html { scroll-behavior: smooth } 삭제:
+   JavaScript에서 header 높이를 보정한 smooth scroll을 직접 구현하므로
+   CSS와 기능이 중복되지 않도록 제거 */
+
+body {
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ===== [추가] 페이드인 효과 (스크롤 시 섹션 콘텐츠가 서서히 나타남) ===== */
+/* JS의 IntersectionObserver가 화면에 들어온 요소에 .visible 클래스를 부여 */
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in.visible {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 사용자가 OS에서 '동작 줄이기'를 설정한 경우 애니메이션 없이 바로 표시 */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+  }
+  .fade-in.visible {
+    animation: none;
+  }
+}
+
+/* ===== Header & Nav ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
+  padding: 0 40px;
+  height: 64px;
+}
+
+/* [추가] 스크롤 진행 바: header 바로 아래에 고정, 너비는 JS에서 스크롤 비율에 따라 변경 */
+#progressBar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background-color: var(--primary);
+  z-index: 1001;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+nav ul {
+  display: flex;
+  gap: 32px;
+}
+
+nav ul li a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  transition: color 0.2s, border-bottom-color 0.2s;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+/* [수정] border-bottom 전체 재선언 대신 색상만 변경하여 hover 시 레이아웃 흔들림 방지 */
+nav ul li a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* [추가] 현재 보고 있는 섹션의 메뉴 강조 (기존 JS 인라인 스타일 방식을 클래스 방식으로 분리) */
+nav ul li a.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ===== Section 공통 ===== */
+section {
+  padding: 100px 40px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 48px;
+  padding: 8px 16px 12px;
+  border-bottom: 3px solid var(--primary);
+  display: inline-block;
+}
+
+/* ===== Home Section ===== */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  max-width: 100%;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 60%);
+}
+
+.home-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+.highlight {
+  color: var(--primary);
+  background-color: #e8f0fe;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.home-content p {
+  font-size: 1.15rem;
+  color: var(--text-mid);
+  margin-bottom: 36px;
+  line-height: 1.9;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ===== About Me Section ===== */
+#about {
+  background-color: var(--bg-light);
+  max-width: 100%;
+  padding: 100px 40px 80px;
+}
+
+#about > .section-title {
+  display: block;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about > .about-grid {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+}
+
+.about-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+.about-card ul li {
+  padding: 6px 0;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.about-card ul li:last-child {
+  border-bottom: none;
+}
+
+/* ===== Projects Section ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.project-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--bg-gray);
+  /* [추가] hover 시 이미지 확대를 위한 transition */
+  transition: transform 0.3s ease;
+}
+
+/* [추가] 카드에 마우스를 올리면 이미지가 살짝 확대 (overflow: hidden으로 카드 밖은 잘림) */
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-info {
+  padding: 24px;
+}
+
+.project-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.project-info p {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  background-color: #e8f0fe;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* [추가] 프로젝트 카드 안에 링크가 여러 개일 때 나란히 배치 */
+.project-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ===== Contact Me Section ===== */
+#contact {
+  background-color: var(--bg-light);
+  max-width: 100%;
+  padding: 100px 40px 80px;
+}
+
+#contact > * {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-desc {
+  text-align: center;
+  color: var(--text-mid);
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+.contact-form {
+  background-color: var(--bg-white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #e53e3e;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #dde1ea;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background-color: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(45,107,228,0.1);
+  background-color: #fff;
+}
+
+/* [추가] 유효성 검사 실패 시 입력창을 빨간 테두리로 시각적 강조 (JS에서 .error 클래스 부여) */
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229,62,62,0.12);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  font-family: inherit;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.sns-area {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sns-area p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.sns-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: stretch;   /* 세 박스 높이 맞춤 */
+}
+
+.sns-btn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  gap: 8px;
+  padding: 16px 32px;
+}
+
+.sns-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.sns-btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.contact-info p {
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--text-dark);
+  color: #aaaacc;
+  text-align: center;
+  padding: 32px 40px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.top-btn {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.top-btn:hover {
+  color: #80aaff;
+}
+
+/* ===== [추가] 반응형 레이아웃 (모바일 대응, 중간보고서 보완 계획) ===== */
+@media (max-width: 768px) {
+
+  /* 헤더: 좌우 여백 축소, 메뉴 간격 줄임 */
+  header {
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 0.95rem;
+  }
+
+  nav ul {
+    gap: 16px;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+
+  /* 섹션 공통: 좌우 여백 축소 */
+  section,
+  #about,
+  #contact {
+    padding: 80px 20px 60px;
+  }
+
+  /* Home: 제목 크기 축소 */
+  .home-content {
+    padding: 0 20px;
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  /* About / Projects: 2열 그리드 → 1열로 전환 */
+  .about-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact: SNS 버튼들을 세로로 배치 */
+  .sns-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+
+  /* Footer: 세로 배치 */
+  footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
